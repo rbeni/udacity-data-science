@@ -10,16 +10,19 @@ def load_data(messages_filepath, categories_filepath):
     
     #Merge datasets
     df = pd.concat([messages_df, categories_df], axis=1)
-    #return df
+    return df
+    
+
+def clean_data(df):
     
     #Split categories into separate category columns
-    categories_names = categories_df['categories'].str.split(';', expand=False).iloc[0]
+    categories_names = df['categories'].str.split(';', expand=False).iloc[0]
     for i, cat_name in enumerate(categories_names):
         new_name = cat_name.split('-')[0]
         categories_names[i] = new_name
 
     #Create a dataframe 
-    categories_df = categories_df['categories'].apply(lambda x: pd.Series(x.split(';')))
+    categories_df = df['categories'].apply(lambda x: pd.Series(x.split(';')))
 
     #Apply new names to the dataframe
     categories_df.columns = categories_names
@@ -30,16 +33,12 @@ def load_data(messages_filepath, categories_filepath):
 
     #Replace cleaned categories dataframe on main dataset
     df = df.drop(columns=['categories'])
-    df = pd.concat([messages_df, categories_df], axis=1)
+    df = pd.concat([df, categories_df], axis=1)
 
     #Remove duplicates
     df = df[df.duplicated(keep='first')]
 
     return df
-
-
-def clean_data(df):
-    pass
 
 
 def save_data(df, database_filename):
@@ -57,7 +56,7 @@ def main():
         df = load_data(messages_filepath, categories_filepath)
 
         print('Cleaning data...')
-        #df = clean_data(df)
+        df = clean_data(df)
         
         print('Saving data...\n    DATABASE: {}'.format(database_filepath))
         save_data(df, database_filepath)
