@@ -34,18 +34,18 @@ To run this project, you will have to:
 Note that the commands below are for Python 3.x interpreters. If you are using Python 2.x, use simply python on the beggining
 
 1. Perform the ETL step
-`python3 data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+⋅⋅⋅ `python3 data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
 
 2. Train the model
-`python3 models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+⋅⋅⋅ `python3 models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
 3. Run the app
 
-Go to the directory containing the app
-`cd app`
+⋅⋅⋅ Go to the directory containing the app
+⋅⋅⋅ `cd app`
 
-Run the app
-`run.py`
+⋅⋅⋅ Run the app
+⋅⋅⋅ `run.py`
 
 ## License
 The code was provided by Udacity and the data used for training by [Appen](https://appen.com/)
