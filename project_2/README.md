@@ -8,19 +8,19 @@ The project has the objective to create a pipeline to analyze twitter messages a
 ## File structure Description
 
 ## Prerequisites
-..* Python>=3.8.15
-..* nltk>=3.7
-..* numpy>=1.23.5
-..* pandas>=1.5.1
-..* python-dateutil>=2.8.2
-..* scikit-learn>=1.1.3
-..* scipy>=1.9.3
-..* six>=1.16.0
-..* SQLAlchemy>=1.4.44
-..* flask>=
-..* tqdm>=4.64.1
-..* urllib3>=1.26.12
-..* wget>=3.2
+- Python>=3.8.15
+- nltk>=3.7
+- numpy>=1.23.5
+- pandas>=1.5.1
+- python-dateutil>=2.8.2
+- scikit-learn>=1.1.3
+- scipy>=1.9.3
+- six>=1.16.0
+- SQLAlchemy>=1.4.44
+- flask>=
+- tqdm>=4.64.1
+- urllib3>=1.26.12
+- wget>=3.2
 
 ## Running
 
