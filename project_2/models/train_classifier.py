@@ -17,17 +17,43 @@ from sklearn.metrics import classification_report
 
 
 def load_data(database_filepath):
+    '''
+    load_data
+    Loads data from a sqlite database
+
+    Input:
+    database_filepath   file containing the sqlite database
+    
+
+    Returns:
+    X   input data for training
+    Y   labels for the training data
+    category_names  list of all the categories which the data is labeled into
+
+    '''
+    
     # read in file
     engine = create_engine(f'sqlite:///{database_filepath}')
     df = pd.read_sql_table('messages', engine)
 
     X = df['message']
     Y = df.drop(columns=['id', 'message', 'original', 'genre'])
+    category_names = list(Y.columns)
 
-    return X, Y, list(Y.columns)
+    return X, Y, category_names
 
 
 def tokenize(text):
+    '''
+    tokenize
+    Transforms a string into a list of tokens for NLP training
+
+    Input:
+    text    string with input data
+
+    Returns:
+    clean_tokens    list of tokenized text
+    '''
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -40,6 +66,15 @@ def tokenize(text):
 
 
 def build_model():
+
+    '''
+    build_model
+    Builds a sklearn pipeline with data preprocessing and Grid Search configurations for model training
+
+    Returns:
+    model_pipeline  sklearn pipeline
+    '''
+
     # text processing and model pipeline
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
@@ -66,6 +101,20 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+
+    '''
+    evaluate_model
+    evaluates a trained model against a set of test data and prints the result
+    
+
+    Input:
+    model   model to be evaluated
+    X_test  input test data
+    Y_test  input label data
+    category_names  list of categories which the data is classified into
+    
+    '''
+
     # output model test results
     y_pred = model.predict(X_test)
 
@@ -76,6 +125,17 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+
+    '''
+    save_model
+    Saves a sklearn model in a specific path in the pickle format
+
+    Input:
+    model   sklearn model to be saved
+    model_filepath  path where the model will be saved
+    
+    '''
+
     # Export model as a pickle file
     with open(model_filepath, 'wb') as f:
         pickle.dump(model, f)
