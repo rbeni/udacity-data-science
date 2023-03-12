@@ -3,13 +3,28 @@
 ## Project Motivation
 This project is the capstone of the Data Engineering part of the Data Science Nanodegree. Here I apply the knowledge provided to create pipelines, which integrate the ETL and Model training parts of a project.
 
-The project has the objective to create a pipeline to analyze twitter messages and classify them according to a few categories.
+The project has the objective to create a pipeline to analyze twitter messages and classify them according to a few categories.an
+
+The ultima goal for the project is an application which allows authorities and organizations to gather information in a faster way about what is needed by a community in an event of a disaster, be it natural or man-made, and also provide the people affected by such disasters a centralized way to communicate what is needed.
+
 
 ## File Description
 
-app/run.py: File that contains the flask code to generate the webpage
-data/process_data.py: Contains the code to extract and the data given in the csv files and save it in a sqlite database
-models/train_classifier.py: Contains the code that trains a ML model based on the data provided by the ETL step
+    app
+    | - template
+    | |- master.html # main page of web app
+    | |- go.html # web app page which displays the results of the analysis
+    |- run.py # File that contains the flask code to generate the web app
+    data
+    |- disaster_categories.csv # data to process
+    |- disaster_messages.csv # data to process
+    |- process_data.py #Contains the code to extract and the data given in the csv files and save it in a sqlite database
+    |- DisasterResponse.db # database containing data cleaned by process_data.py
+    models
+    |- train_classifier.py #Contains the code that trains a ML model based on the data provided by the ETL step
+    |- classifier.pkl # saved model trained by train_classifier.py
+    README.md
+
 
 
 ## Prerequisites

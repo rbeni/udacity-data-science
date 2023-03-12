@@ -4,6 +4,18 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    load_data
+    Load data from csv files and merge them to a single pandas dataframe
+
+    Input:
+    messages_filepath   filepath to messages csv file
+    categories_filepath filepath to categories csv file
+
+    Returns:
+    df dataframe merging categories and messages    
+    '''
+
     #Load files
     messages_df = pd.read_csv(messages_filepath)
     categories_df = pd.read_csv(categories_filepath)
@@ -14,6 +26,16 @@ def load_data(messages_filepath, categories_filepath):
     
 
 def clean_data(df):
+    '''
+    clean_data
+    Cleans data from the data inputed
+
+    Input:
+    df dataframe containing the data to be cleaned
+
+    Returns:
+    df dataframe containing the cleaned data
+    '''
     
     #Split categories into separate category columns
     categories_names = df['categories'].str.split(';', expand=False).iloc[0]
@@ -29,7 +51,7 @@ def clean_data(df):
 
     #Clean values of dataframe, from string to integer
     for column in categories_df:
-        categories_df[column] = categories_df[column].apply(lambda x: x.split('-')[-1]).astype(int)
+        categories_df[column] = categories_df[column].apply(lambda x: x.split('-')[-1]).astype(bool)
 
     #Replace cleaned categories dataframe on main dataset
     df = df.drop(columns=['categories'])
@@ -42,8 +64,17 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    '''
+    save_data
+    Saves a dataframe in an specific file
+
+    Input:
+    df dataframe to be saved
+    database_filename path where the database will be saved
+    '''
+
     engine = create_engine(f'sqlite:///{database_filename}')
-    df.to_sql('messages', engine, index=False)
+    df.to_sql('messages', engine, index=False, if_exists='replace')
 
 
 def main():
