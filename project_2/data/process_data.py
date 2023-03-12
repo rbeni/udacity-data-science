@@ -51,7 +51,7 @@ def clean_data(df):
 
     #Clean values of dataframe, from string to integer
     for column in categories_df:
-        categories_df[column] = categories_df[column].apply(lambda x: x.split('-')[-1]).astype(bool)
+        categories_df[column] = categories_df[column].apply(lambda x: x.split('-')[-1]).astype(int).astype(bool)
 
     #Replace cleaned categories dataframe on main dataset
     df = df.drop(columns=['categories'])

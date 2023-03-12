@@ -43,6 +43,11 @@ def index():
     # TODO: Below is an example - modify to extract data for your own visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
+
+    categories = list(df.drop(columns=['id', 'message', 'original', 'genre']).columns)
+    top10_responses = df[categories].sum().sort_values(ascending=False).iloc[:10]
+    response_counts =  list(top10_responses.iloc[:])
+    response_names = list(top10_responses.index)
     
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
@@ -62,6 +67,24 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=response_names,
+                    y=response_counts
+                )
+            ],
+
+            'layout': {
+                'title': '10 Most frequent reponse categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Categories"
                 }
             }
         }
