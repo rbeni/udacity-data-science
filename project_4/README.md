@@ -4,7 +4,7 @@
 
 This project is the capstone of the Data Science Nanodegree. Here I apply the concepts learned to use and analyze data to reach conclusions and to present the conclusions of my reseach to other people. Also techniques to handle huge ammounts of data are used, in the form of Apache Spark and PySpark, and also applying machine learning models to predict results and get more insights.
 
-The dataset used in this project was provided by Udacity, but was not included due to size.
+The dataset used in this project was provided by Udacity, and is zipped to avoid limitations with github's size limit and I want to avoid using LFS in this repository.
 
 This analysis has a companion article on medium going over the main points of the analysis:
 
