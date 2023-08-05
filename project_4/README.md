@@ -12,7 +12,8 @@ This analysis has a companion article on medium going over the main points of th
 
 ## File Description
 
-    Sparkfy.ipynb # The jupyter notebook where the analysis was made  
+    Sparkfy.ipynb                   # The jupyter notebook where the analysis was made  
+    mini_sparkify_event_data.zip    # Contains the data used in this analysis
     README.md  
 
 > Note: There is a json file called mini_sparkify_event_data.json containing the dataset used in the analysis, but it is not included
