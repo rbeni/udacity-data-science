@@ -6,9 +6,6 @@ This project is the capstone of the Data Science Nanodegree. Here I apply the co
 
 The dataset used in this project was provided by Udacity, and is zipped to avoid limitations with github's size limit and I want to avoid using LFS in this repository.
 
-This analysis has a companion article on medium going over the main points of the analysis:
-https://medium.com/@rdbeni/can-you-predict-if-a-user-will-leave-a-music-streaming-service-based-on-sklearn-models-509e04ebaad6
-
 
 ## File Description
 
