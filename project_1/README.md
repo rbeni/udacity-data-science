@@ -7,10 +7,6 @@ This project is a deliverable of the Introduction to Data Science part of the Da
 The dataset used in this project was obtained at Kaggle, on the following page:  
 https://www.kaggle.com/datasets/hossaingh/udemy-courses
 
-This analysis has a companion article on medium going over the main points of the analysis:
-https://medium.com/@rdbeni/so-you-want-to-earn-money-in-udemy-92c5b814144f
-
-
 ## File Description
 
     data  
